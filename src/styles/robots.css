@@ -1,0 +1,495 @@
+/* ==========================================================================
+   RAVITEJA — THE AI UNIVERSE | 3D ROBOTS & LABORATORY STYLES
+   ========================================================================== */
+
+/* Hero 3D Robot Stage */
+.hero-3d-stage-wrap {
+  position: relative;
+  width: 100%;
+  height: 510px;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at 50% 42%, rgba(33, 244, 239, 0.14), rgba(10, 15, 36, 0.86) 72%);
+  border: 1px solid rgba(33, 244, 239, 0.35);
+  box-shadow: 0 0 45px rgba(33, 244, 239, 0.16), inset 0 0 40px rgba(196, 60, 255, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-stage-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.hero-stage-canvas:active {
+  cursor: grabbing;
+}
+
+.stage-hud-top,
+.stage-hud-bottom {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  pointer-events: none;
+}
+
+.stage-hud-top {
+  background: linear-gradient(180deg, rgba(5, 9, 24, 0.85), transparent);
+}
+
+.stage-hud-bottom {
+  background: linear-gradient(0deg, rgba(5, 9, 24, 0.9), transparent);
+  pointer-events: auto;
+}
+
+.stage-tag {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.robot-speech-bubble {
+  background: rgba(8, 15, 36, 0.9);
+  border: 1px solid var(--cyan);
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-family: var(--font-tech);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-main);
+  box-shadow: 0 0 20px rgba(33, 244, 239, 0.28);
+  max-width: 290px;
+}
+
+.hero-robot-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.mini-hud-btn {
+  background: rgba(33, 244, 239, 0.1);
+  color: var(--cyan);
+  border: 1px solid rgba(33, 244, 239, 0.35);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-size: 9.5px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.mini-hud-btn:hover,
+.mini-hud-btn.active {
+  background: var(--cyan);
+  color: #04060f;
+  box-shadow: 0 0 12px var(--cyan);
+}
+
+/* ==========================================================================
+   INTERACTIVE PROJECT LABORATORY (6 ROBOTS)
+   ========================================================================== */
+.lab-overview-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px 22px;
+  margin-bottom: 24px;
+  border-radius: var(--radius-md);
+  background: rgba(10, 16, 38, 0.85);
+  border: 1px solid var(--border-cyan);
+}
+
+.lab-instruction {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-tech);
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.lab-instruction strong {
+  color: var(--cyan);
+}
+
+/* Six-Robot Selector Dock */
+.robot-selector-dock {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.robot-dock-card {
+  background: rgba(11, 18, 42, 0.78);
+  border: 1px solid rgba(33, 244, 239, 0.22);
+  border-radius: 12px;
+  padding: 14px 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.28s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.robot-dock-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--robot-accent, var(--cyan));
+  opacity: 0.25;
+  transition: opacity 0.28s ease;
+}
+
+.robot-dock-card:hover,
+.robot-dock-card.active {
+  transform: translateY(-4px);
+  border-color: var(--robot-accent, var(--cyan));
+  background: rgba(18, 28, 64, 0.92);
+  box-shadow: 0 0 24px rgba(33, 244, 239, 0.24);
+}
+
+.robot-dock-card.active::after {
+  opacity: 1;
+}
+
+.dock-unit-id {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--robot-accent, var(--cyan));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.dock-robot-name {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 3px;
+}
+
+.dock-project-short {
+  font-family: var(--font-tech);
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+/* Main Laboratory Split Layout: 3D Arena + Holographic Project Inspector */
+.lab-main-arena {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.lab-3d-viewport {
+  position: relative;
+  min-height: 560px;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at 50% 45%, rgba(33, 244, 239, 0.12), rgba(5, 8, 22, 0.94) 78%);
+  border: 1px solid rgba(33, 244, 239, 0.35);
+  box-shadow: 0 0 45px rgba(33, 244, 239, 0.15);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#labRobotCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.lab-viewport-hud-top {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 20px;
+  background: linear-gradient(180deg, rgba(4, 7, 18, 0.88), transparent);
+  pointer-events: none;
+}
+
+.env-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 99px;
+  border: 1px solid var(--border-cyan);
+  background: rgba(8, 15, 36, 0.84);
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--cyan);
+}
+
+.lab-viewport-hud-bottom {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 20px;
+  background: linear-gradient(0deg, rgba(4, 7, 18, 0.92), transparent);
+}
+
+.lab-camera-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Holographic Inspector Panel */
+.lab-inspector-panel {
+  background: linear-gradient(155deg, rgba(11, 18, 42, 0.92), rgba(19, 11, 42, 0.86));
+  border: 1px solid rgba(33, 244, 239, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-neon);
+  position: relative;
+  overflow: hidden;
+}
+
+.inspector-unit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(33, 244, 239, 0.18);
+}
+
+.unit-code {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--cyan);
+}
+
+.unit-personality {
+  font-family: var(--font-tech);
+  font-size: 13px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  background: rgba(196, 60, 255, 0.15);
+  border: 1px solid rgba(196, 60, 255, 0.4);
+  color: #eabfff;
+}
+
+.inspector-project-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.4vw, 26px);
+  color: var(--text-main);
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.inspector-robot-quote {
+  font-family: var(--font-tech);
+  font-size: 14.5px;
+  color: var(--cyan);
+  background: rgba(33, 244, 239, 0.07);
+  border-left: 3px solid var(--cyan);
+  padding: 10px 14px;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 16px;
+}
+
+.inspector-description {
+  color: var(--text-secondary);
+  font-size: 14.5px;
+  line-height: 1.75;
+  margin-bottom: 18px;
+}
+
+.inspector-subheading {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.inspector-features-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 12px;
+  margin-bottom: 20px;
+}
+
+.inspector-features-list li {
+  font-size: 13px;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inspector-features-list li::before {
+  content: '◈';
+  color: var(--cyan);
+  font-size: 12px;
+}
+
+.inspector-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.tech-chip {
+  padding: 5px 11px;
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  letter-spacing: 1px;
+  background: rgba(196, 60, 255, 0.12);
+  border: 1px solid rgba(196, 60, 255, 0.38);
+  color: #ebd4ff;
+}
+
+.inspector-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+/* ==========================================================================
+   ALL 6 ROBOTS QUICK-LAUNCH CARDS GRID (BELOW ARENA)
+   ========================================================================== */
+.robot-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 32px;
+}
+
+.robot-summary-card {
+  background: rgba(11, 17, 40, 0.78);
+  border: 1px solid rgba(33, 244, 239, 0.22);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.28s ease;
+}
+
+.robot-summary-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--cyan);
+  box-shadow: var(--shadow-neon);
+}
+
+.robot-summary-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.robot-summary-card h4 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--cyan);
+  margin-bottom: 8px;
+}
+
+.robot-summary-card p {
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+
+.robot-summary-btns {
+  display: flex;
+  gap: 10px;
+}
+
+.robot-summary-btns .btn {
+  padding: 10px 14px;
+  font-size: 11px;
+  flex: 1;
+}
+
+/* Contact 3D Robot Stage */
+.contact-robot-stage {
+  position: relative;
+  min-height: 390px;
+  border-radius: var(--radius-md);
+  background: radial-gradient(circle at 50% 45%, rgba(33, 244, 239, 0.14), rgba(8, 12, 28, 0.9) 75%);
+  border: 1px solid var(--border-cyan);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#contactRobotCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* WebGL Fallback Notice */
+.webgl-fallback-box {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  text-align: center;
+  background: radial-gradient(circle, rgba(16, 28, 64, 0.95), rgba(6, 10, 24, 0.98));
+  z-index: 2;
+}
+
+.fallback-robot-svg {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 18px var(--cyan));
+}
+

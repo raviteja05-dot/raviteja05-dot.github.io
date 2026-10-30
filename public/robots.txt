@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://raviteja05-dot.github.io/sitemap.xml
+

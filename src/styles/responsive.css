@@ -1,0 +1,137 @@
+/* ==========================================================================
+   RAVITEJA — THE AI UNIVERSE | RESPONSIVE LAYOUT STYLES
+   Desktop, Laptop, Tablet, and Mobile Optimization
+   ========================================================================== */
+
+@media (max-width: 1180px) {
+  .robot-selector-dock {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .lab-main-arena {
+    grid-template-columns: 1fr;
+  }
+  .lab-3d-viewport {
+    min-height: 460px;
+  }
+  .robot-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 960px) {
+  .hero-grid,
+  .about-layout,
+  .contact-hub-grid,
+  .jarvis-workspace,
+  .med-demo-grid,
+  .ecom-layout,
+  .analytics-charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-3d-stage-wrap {
+    height: 420px;
+  }
+
+  .analytics-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .edu-focus-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .menu-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-hud-status {
+    display: none;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px 24px;
+    background: rgba(5, 8, 22, 0.98);
+    border-bottom: 1px solid var(--border-cyan);
+    gap: 10px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+}
+
+@media (max-width: 680px) {
+  section {
+    padding: 78px 0;
+  }
+
+  .container {
+    padding: 0 18px;
+  }
+
+  .robot-selector-dock {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .robot-cards-grid,
+  .skills-grid,
+  .contact-links-grid,
+  .ecom-products-grid,
+  .edu-focus-grid,
+  .inspector-features-list {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-telemetry {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-3d-stage-wrap {
+    height: 360px;
+  }
+
+  .lab-3d-viewport {
+    min-height: 380px;
+  }
+
+  .holo-card,
+  .lab-inspector-panel,
+  .education-holo-card {
+    padding: 22px 18px;
+  }
+
+  .demo-modal-backdrop {
+    padding: 10px;
+  }
+
+  .demo-modal-body {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .robot-selector-dock,
+  .analytics-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-cta-group .btn,
+  .inspector-actions .btn {
+    width: 100%;
+  }
+}
+
